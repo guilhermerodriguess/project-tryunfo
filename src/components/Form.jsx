@@ -17,7 +17,6 @@ class Form extends Component {
       isSaveButtonDisabled,
       onSaveButtonClick,
       onKeyUp,
-      trunfo,
     } = this.props;
 
     return (
@@ -35,7 +34,6 @@ class Form extends Component {
             value={ cardName }
             onChange={ onInputChange }
             onKeyUp={ onKeyUp }
-            onKeyDown={ trunfo }
           />
         </label>
         <label htmlFor="description-input">
@@ -159,6 +157,5 @@ Form.propTypes = {
   onInputChange: propTypes.func.isRequired,
   onSaveButtonClick: propTypes.func.isRequired,
   onKeyUp: propTypes.func.isRequired,
-  trunfo: propTypes.func.isRequired,
 };
 export default Form;

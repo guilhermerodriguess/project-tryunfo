@@ -156,18 +156,33 @@ class App extends React.Component {
             cardTrunfo={ cardTrunfo }
           />
         </section>
-        <section className="showAllCards">
-          {cards.map((card) => (<Card
-            key={ card.cardName }
-            cardName={ card.cardName }
-            cardDescription={ card.cardDescription }
-            cardAttr1={ card.cardAttr1 }
-            cardAttr2={ card.cardAttr2 }
-            cardAttr3={ card.cardAttr3 }
-            cardImage={ card.cardImage }
-            cardRare={ card.cardRare }
-            cardTrunfo={ card.cardTrunfo }
-          />))}
+        <section className="show-all-cards">
+          {cards.map((card, index) => (
+            <>
+              <Card
+                className="card"
+                deleteCard={ this.deleteCard }
+                key={ index }
+                cardName={ card.cardName }
+                cardDescription={ card.cardDescription }
+                cardAttr1={ card.cardAttr1 }
+                cardAttr2={ card.cardAttr2 }
+                cardAttr3={ card.cardAttr3 }
+                cardImage={ card.cardImage }
+                cardRare={ card.cardRare }
+                cardTrunfo={ card.cardTrunfo }
+              />
+              <input
+                type="button"
+                value="Excluir"
+                data-testid="delete-button"
+                onClick={ () => {
+                  this.setState((prevState) => prevState.cards.splice(index, 1));
+                } }
+              />
+            </>
+          ))}
+
         </section>
       </main>
     );
