@@ -11,7 +11,7 @@ class App extends React.Component {
 
     this.state = {
       cardName: '',
-      cardDescription: '',
+      cardDescription: ' ',
       cardAttr1: 0,
       cardAttr2: 0,
       cardAttr3: 0,
