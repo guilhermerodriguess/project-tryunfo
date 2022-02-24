@@ -13,10 +13,13 @@ class Form extends Component {
       cardImage,
       cardRare,
       cardTrunfo,
+      hasTrunfo,
       isSaveButtonDisabled,
       onSaveButtonClick,
       onKeyUp,
+      trunfo,
     } = this.props;
+
     return (
       <section>
         <h2>
@@ -32,6 +35,7 @@ class Form extends Component {
             value={ cardName }
             onChange={ onInputChange }
             onKeyUp={ onKeyUp }
+            onKeyDown={ trunfo }
           />
         </label>
         <label htmlFor="description-input">
@@ -113,17 +117,18 @@ class Form extends Component {
             <option value="muito raro">muito raro</option>
           </select>
         </label>
-        <label htmlFor="trunfo-input">
-          Trunfo Super Carro
-          <input
-            type="checkbox"
-            name="cardTrunfo"
-            id="trunfo-input"
-            data-testid="trunfo-input"
-            checked={ cardTrunfo }
-            onChange={ onInputChange }
-          />
-        </label>
+        {hasTrunfo ? <p>Você já tem um Super Trunfo em seu baralho</p> : (
+          <label htmlFor="trunfo-input">
+            Trunfo Super Carro ?
+            <input
+              type="checkbox"
+              name="cardTrunfo"
+              id="trunfo-input"
+              data-testid="trunfo-input"
+              checked={ cardTrunfo }
+              onChange={ onInputChange }
+            />
+          </label>)}
         <label htmlFor="save-button">
           <input
             name="isSaveButtonDisabled"
@@ -150,8 +155,10 @@ Form.propTypes = {
   cardRare: propTypes.string.isRequired,
   cardTrunfo: propTypes.bool.isRequired,
   isSaveButtonDisabled: propTypes.bool.isRequired,
+  hasTrunfo: propTypes.bool.isRequired,
   onInputChange: propTypes.func.isRequired,
   onSaveButtonClick: propTypes.func.isRequired,
   onKeyUp: propTypes.func.isRequired,
+  trunfo: propTypes.func.isRequired,
 };
 export default Form;
