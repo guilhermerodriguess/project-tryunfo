@@ -22,10 +22,6 @@ img {
   width: 300px;
 }
 
-main {
-  display: flex;
-}
-
 h1 {
   text-align: center;
 }
@@ -38,4 +34,13 @@ section {
   flex-grow: 1;
   border: 1px black solid;
   text-align: center;
+}
+
+.Card1 {
+  display: flex;
+}
+
+.showAllCards {
+  align-items: stretch;
+  display: flex;
 }
