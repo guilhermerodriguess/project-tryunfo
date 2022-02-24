@@ -8,17 +8,19 @@ class App extends React.Component {
     super();
 
     this.onInputChange = this.onInputChange.bind(this);
+    this.onKeyUp = this.onKeyUp.bind(this);
 
     this.state = {
       cardName: '',
-      cardDescription: ' ',
-      cardAttr1: 0,
-      cardAttr2: 0,
-      cardAttr3: 0,
+      cardDescription: '',
+      cardAttr1: '',
+      cardAttr2: '',
+      cardAttr3: '',
       cardImage: '',
       cardRare: '',
       cardTrunfo: false,
       hasTrunfo: false,
+      isSaveButtonDisabled: true,
     };
   }
 
@@ -29,6 +31,45 @@ class App extends React.Component {
     this.setState({
       [name]: value,
     });
+  }
+
+  onKeyUp() {
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+    } = this.state;
+    const acceleration = parseInt(cardAttr1, 10);
+    const maxSpeed = parseInt(cardAttr2, 10);
+    const power = parseInt(cardAttr3, 10);
+    const sum = acceleration + maxSpeed + power;
+    const maxPoints = 210;
+    const maxPoint = 90;
+    const minPoint = 0;
+    let disable = false;
+
+    if (!cardName
+      || !cardDescription
+      || !cardImage
+      || !cardRare) disable = true;
+    if (sum > maxPoints) disable = true;
+    if (acceleration > maxPoint
+      || maxSpeed > maxPoint
+      || power > maxPoint) disable = true;
+    if (acceleration < minPoint
+      || maxSpeed < minPoint
+      || power < minPoint) disable = true;
+    this.setState({
+      isSaveButtonDisabled: disable,
+    });
+  }
+
+  onSaveButtonClick() {
+
   }
 
   render() {
@@ -59,7 +100,8 @@ class App extends React.Component {
           hasTrunfo={ hasTrunfo }
           isSaveButtonDisabled={ isSaveButtonDisabled }
           onInputChange={ this.onInputChange }
-          onSaveButtonClick={ () => {} }
+          onSaveButtonClick={ this.onSaveButtonClick }
+          onKeyUp={ this.onKeyUp }
         />
         <Card
           cardName={ cardName }

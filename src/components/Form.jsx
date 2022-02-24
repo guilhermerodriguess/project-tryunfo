@@ -15,6 +15,7 @@ class Form extends Component {
       cardTrunfo,
       isSaveButtonDisabled,
       onSaveButtonClick,
+      onKeyUp,
     } = this.props;
     return (
       <section>
@@ -30,6 +31,7 @@ class Form extends Component {
             name="cardName"
             value={ cardName }
             onChange={ onInputChange }
+            onKeyUp={ onKeyUp }
           />
         </label>
         <label htmlFor="description-input">
@@ -42,6 +44,7 @@ class Form extends Component {
             data-testid="description-input"
             value={ cardDescription }
             onChange={ onInputChange }
+            onKeyUp={ onKeyUp }
           />
         </label>
         <label htmlFor="acceleration">
@@ -53,6 +56,8 @@ class Form extends Component {
             data-testid="attr1-input"
             value={ cardAttr1 }
             onChange={ onInputChange }
+            onClick={ onKeyUp }
+            onKeyUp={ onKeyUp }
           />
         </label>
         <label htmlFor="max-speed">
@@ -64,6 +69,8 @@ class Form extends Component {
             data-testid="attr2-input"
             value={ cardAttr2 }
             onChange={ onInputChange }
+            onClick={ onKeyUp }
+            onKeyUp={ onKeyUp }
 
           />
         </label>
@@ -76,6 +83,8 @@ class Form extends Component {
             data-testid="attr3-input"
             value={ cardAttr3 }
             onChange={ onInputChange }
+            onClick={ onKeyUp }
+            onKeyUp={ onKeyUp }
           />
         </label>
         <label htmlFor="image-input">
@@ -86,6 +95,7 @@ class Form extends Component {
             name="cardImage"
             value={ cardImage }
             onChange={ onInputChange }
+            onKeyUp={ onKeyUp }
           />
         </label>
         <label htmlFor="rare-input">
@@ -96,6 +106,7 @@ class Form extends Component {
             data-testid="rare-input"
             value={ cardRare }
             onChange={ onInputChange }
+            onClick={ onKeyUp }
           >
             <option value="normal">normal</option>
             <option value="raro">raro</option>
@@ -115,6 +126,7 @@ class Form extends Component {
         </label>
         <label htmlFor="save-button">
           <input
+            name="isSaveButtonDisabled"
             type="button"
             id="save-button"
             value="Salvar"
@@ -140,6 +152,6 @@ Form.propTypes = {
   isSaveButtonDisabled: propTypes.bool.isRequired,
   onInputChange: propTypes.func.isRequired,
   onSaveButtonClick: propTypes.func.isRequired,
+  onKeyUp: propTypes.func.isRequired,
 };
-
 export default Form;
