@@ -17,14 +17,17 @@ class Form extends Component {
       onSaveButtonClick,
     } = this.props;
     return (
-      <>
+      <section>
+        <h2>
+          Adicionar nova carta
+        </h2>
         <label htmlFor="name-input">
           Nome
           <input
             id="name-input"
             type="text"
             data-testid="name-input"
-            name="name"
+            name="cardName"
             value={ cardName }
             onChange={ onInputChange }
           />
@@ -32,7 +35,7 @@ class Form extends Component {
         <label htmlFor="description-input">
           Descrição
           <textarea
-            name="description-input"
+            name="cardDescription"
             id="description-input"
             cols="30"
             rows="10"
@@ -45,7 +48,7 @@ class Form extends Component {
           Aceleração
           <input
             type="number"
-            name="acceleration"
+            name="cardAttr1"
             id="acceleration"
             data-testid="attr1-input"
             value={ cardAttr1 }
@@ -56,7 +59,7 @@ class Form extends Component {
           Velocidade Máxima
           <input
             type="number"
-            name="max-speed"
+            name="cardAttr2"
             id="max-speed"
             data-testid="attr2-input"
             value={ cardAttr2 }
@@ -68,7 +71,7 @@ class Form extends Component {
           Potência(cv)
           <input
             type="number"
-            name="power"
+            name="cardAttr3"
             id="power"
             data-testid="attr3-input"
             value={ cardAttr3 }
@@ -80,7 +83,7 @@ class Form extends Component {
           <input
             type="text"
             data-testid="image-input"
-            name="image-input"
+            name="cardImage"
             value={ cardImage }
             onChange={ onInputChange }
           />
@@ -88,7 +91,7 @@ class Form extends Component {
         <label htmlFor="rare-input">
           Raridade
           <select
-            name="rare-input"
+            name="cardRare"
             id="rare-input"
             data-testid="rare-input"
             value={ cardRare }
@@ -103,7 +106,7 @@ class Form extends Component {
           Trunfo Super Carro
           <input
             type="checkbox"
-            name="trunfo-input"
+            name="cardTrunfo"
             id="trunfo-input"
             data-testid="trunfo-input"
             checked={ cardTrunfo }
@@ -120,14 +123,13 @@ class Form extends Component {
             onClick={ onSaveButtonClick }
           />
         </label>
-      </>
+      </section>
     );
   }
 }
 
 Form.propTypes = {
   cardName: propTypes.string.isRequired,
-  onInputChange: propTypes.func.isRequired,
   cardDescription: propTypes.string.isRequired,
   cardAttr1: propTypes.string.isRequired,
   cardAttr2: propTypes.string.isRequired,
@@ -136,6 +138,7 @@ Form.propTypes = {
   cardRare: propTypes.string.isRequired,
   cardTrunfo: propTypes.bool.isRequired,
   isSaveButtonDisabled: propTypes.bool.isRequired,
+  onInputChange: propTypes.func.isRequired,
   onSaveButtonClick: propTypes.func.isRequired,
 };
 
